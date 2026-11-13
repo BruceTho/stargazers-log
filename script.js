@@ -1,10 +1,14 @@
-fetch("events.json")
-	.then((response) => response.json())
-	.then((events) => {
-		const list = document.querySelector("#starred");
-		events.forEach((event) => {
-			const item = document.createElement("li");
-			item.textContent = `${event.name} — starred ${event.starred}`;
-			list.appendChild(item);
-		});
-	});
+- fetch("events.json")
+-   .then((response) => response.json())
++ fetch("events.json")
++   .then((response) => {
++     if (!response.ok) throw new Error("Could not load starred repositories");
++     return response.json();
++   })
++   .then((events) => {
++     if (!Array.isArray(events)) throw new Error("Unexpected data format");
++     // Render events...
++   })
++   .catch(() => {
++     // Show a readable error in the page.
++   });
