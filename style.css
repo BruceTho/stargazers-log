@@ -3,10 +3,8 @@ body {
   margin: 2rem;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
+- <ul id="starred"></ul>
++ <ul id="starred" role="list"></ul>
 
 li {
   padding: 0.5rem 0;
